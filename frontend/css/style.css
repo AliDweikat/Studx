@@ -354,3 +354,83 @@ select.search-input {
 .auth-btn:active {
   transform: scale(0.98);
 }
+
+/* --- Mobile Responsive Styles --- */
+@media (max-width: 768px) {
+  /* Materials page filters - stack vertically on mobile */
+  .materials-filters {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  .materials-filters .search-wrapper {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+  
+  .materials-filters select.search-input {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  
+  /* Navbar adjustments */
+  .navbar {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .nav-links a {
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+  
+  /* Grid adjustments */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Hero section */
+  .hero {
+    padding: 60px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  /* Cards */
+  .card {
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+  
+  .brand {
+    font-size: 1.4rem;
+  }
+  
+  .nav-links a {
+    margin-left: 5px;
+    font-size: 0.85rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .search-input {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}

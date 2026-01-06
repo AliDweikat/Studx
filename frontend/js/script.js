@@ -55,9 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Apply the language immediately when page loads
   updatePageLanguage();
 
-  // Fetch the faculty cards from your Node.js server
-  const facultyGrid =
-    document.querySelector("#facultiesGrid") || document.querySelector(".grid");
+  // Fetch the faculty cards from your Node.js server (only on homepage)
+  const facultyGrid = document.querySelector("#facultiesGrid");
   if (facultyGrid) {
     fetchFaculties(facultyGrid);
   }
