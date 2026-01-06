@@ -20,6 +20,7 @@ function loadUsers() {
 function saveUsers(users) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(users, null, 2), 'utf8');
+    console.log(`[Persistence] Saved ${users.length} users to ${DATA_FILE}`);
   } catch (error) {
     console.error('Error saving users data:', error);
   }

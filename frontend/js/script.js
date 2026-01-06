@@ -774,7 +774,11 @@ function getCurrentUser() {
 // Update authentication UI across all pages
 function updateAuthUI() {
   const user = getCurrentUser();
-  const loginButton = document.querySelector(".btn-login");
+  // Use ID selector first, fallback to nav-links selector to avoid hero button
+  const loginButton =
+    document.getElementById("navLoginButton") ||
+    document.querySelector(".nav-links .btn-login") ||
+    document.querySelector(".btn-login");
   const t = translations[currentLang] || translations.tr;
 
   // Remove ALL existing logout buttons first
@@ -792,12 +796,8 @@ function updateAuthUI() {
 
   if (loginButton) {
     if (user) {
-      // User is logged in - replace login button with user name (links to profile)
-      loginButton.textContent = user.name;
-      loginButton.href = getPagesPath("profile.html");
-      loginButton.style.cursor = "pointer";
-      loginButton.onclick = null;
-      loginButton.className = "btn-login";
+      // User is logged in - HIDE login button
+      loginButton.style.display = "none";
 
       // Add logout button
       const logoutBtn = document.createElement("a");
@@ -819,7 +819,8 @@ function updateAuthUI() {
         loginButton.parentElement.appendChild(logoutBtn);
       }
     } else {
-      // User is not logged in - show login button
+      // User is not logged in - SHOW login button
+      loginButton.style.display = "inline-block";
       loginButton.textContent = t.nav_login || "Giriş Yap";
       loginButton.href = getPagesPath("login.html");
       loginButton.style.cursor = "pointer";

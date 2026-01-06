@@ -1,7 +1,13 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const { Faculty, Departments, Courses, Materials, Users: defaultUsers } = require("./database");
+const {
+  Faculty,
+  Departments,
+  Courses,
+  Materials,
+  Users: defaultUsers,
+} = require("./database");
 const { initializeUsers, saveUsers } = require("./persistence");
 
 // Initialize Users with persistence (load from file or use defaults)
@@ -30,8 +36,9 @@ app.use((req, res, next) => {
 // Serve static files from the public directory (one level up from src)
 app.use(express.static(path.join(__dirname, "../public")));
 
+// Health check endpoint for Render
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.json({ status: "ok", message: "Studx Backend API is running" });
 });
 
 app.get("/faculty", (req, res) => {
@@ -155,12 +162,12 @@ app.post("/materials/:id/vote", (req, res) => {
   if (voteType === "upvote") {
     if (hasLiked) {
       // User already liked - remove like
-      material.likedBy = material.likedBy.filter(id => id !== userId);
+      material.likedBy = material.likedBy.filter((id) => id !== userId);
       material.upvotes = Math.max(0, material.upvotes - 1);
     } else {
       // Remove dislike if exists
       if (hasDisliked) {
-        material.dislikedBy = material.dislikedBy.filter(id => id !== userId);
+        material.dislikedBy = material.dislikedBy.filter((id) => id !== userId);
         material.downvotes = Math.max(0, material.downvotes - 1);
       }
       // Add like
@@ -170,12 +177,12 @@ app.post("/materials/:id/vote", (req, res) => {
   } else if (voteType === "downvote") {
     if (hasDisliked) {
       // User already disliked - remove dislike
-      material.dislikedBy = material.dislikedBy.filter(id => id !== userId);
+      material.dislikedBy = material.dislikedBy.filter((id) => id !== userId);
       material.downvotes = Math.max(0, material.downvotes - 1);
     } else {
       // Remove like if exists
       if (hasLiked) {
-        material.likedBy = material.likedBy.filter(id => id !== userId);
+        material.likedBy = material.likedBy.filter((id) => id !== userId);
         material.upvotes = Math.max(0, material.upvotes - 1);
       }
       // Add dislike
@@ -201,7 +208,7 @@ app.get("/materials/vote-status/:userId", (req, res) => {
   const userId = parseInt(req.params.userId);
   const statusMap = {};
 
-  Materials.forEach(material => {
+  Materials.forEach((material) => {
     if (!material.likedBy) material.likedBy = [];
     if (!material.dislikedBy) material.dislikedBy = [];
     statusMap[material.id] = {
@@ -233,7 +240,9 @@ app.post("/auth/register", (req, res) => {
   // Check if user already exists
   const existingUser = Users.find((u) => u.email === email);
   if (existingUser) {
-    return res.status(400).json({ error: "User with this email already exists" });
+    return res
+      .status(400)
+      .json({ error: "User with this email already exists" });
   }
 
   // Create new user
@@ -268,8 +277,10 @@ app.post("/users/:userId/courses/:courseId/view", (req, res) => {
 
   // Update recently viewed - use map to update existing or add new
   const now = new Date().toISOString();
-  const existingIndex = user.coursesRecentlyViewed.findIndex((cv) => cv.courseId === courseId);
-  
+  const existingIndex = user.coursesRecentlyViewed.findIndex(
+    (cv) => cv.courseId === courseId
+  );
+
   if (existingIndex !== -1) {
     // Update existing entry's viewedAt timestamp
     user.coursesRecentlyViewed[existingIndex].viewedAt = now;
@@ -280,14 +291,16 @@ app.post("/users/:userId/courses/:courseId/view", (req, res) => {
     // Add new entry at the beginning
     user.coursesRecentlyViewed.unshift({ courseId, viewedAt: now });
   }
-  
+
   // Keep only last 10
   if (user.coursesRecentlyViewed.length > 10) {
     user.coursesRecentlyViewed = user.coursesRecentlyViewed.slice(0, 10);
   }
 
   // Update most viewed
-  const mostViewed = user.coursesMostViewed.find((cv) => cv.courseId === courseId);
+  const mostViewed = user.coursesMostViewed.find(
+    (cv) => cv.courseId === courseId
+  );
   if (mostViewed) {
     mostViewed.viewCount += 1;
   } else {
@@ -356,6 +369,7 @@ app.get("/users/:userId", (req, res) => {
   res.json(userWithoutPassword);
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
