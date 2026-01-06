@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const { Faculty, Departments, Courses, Materials } = require("./database");
+const { Faculty, Departments, Courses, Materials, Users } = require("./database");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -127,20 +127,57 @@ app.get("/materials/:id", (req, res) => {
   res.json(material);
 });
 
-// Vote endpoint
+// Vote endpoint - tracks per-user likes/dislikes
 app.post("/materials/:id/vote", (req, res) => {
   const materialId = parseInt(req.params.id);
-  const { voteType } = req.body; // "upvote" or "downvote"
+  const { voteType, userId } = req.body; // "upvote" or "downvote", userId required
+
+  if (!userId) {
+    return res.status(401).json({ error: "User must be logged in to vote" });
+  }
 
   const material = Materials.find((m) => m.id === materialId);
   if (!material) {
     return res.status(404).json({ error: "Material not found" });
   }
 
+  // Initialize arrays if they don't exist
+  if (!material.likedBy) material.likedBy = [];
+  if (!material.dislikedBy) material.dislikedBy = [];
+
+  const hasLiked = material.likedBy.includes(userId);
+  const hasDisliked = material.dislikedBy.includes(userId);
+
   if (voteType === "upvote") {
-    material.upvotes += 1;
+    if (hasLiked) {
+      // User already liked - remove like
+      material.likedBy = material.likedBy.filter(id => id !== userId);
+      material.upvotes = Math.max(0, material.upvotes - 1);
+    } else {
+      // Remove dislike if exists
+      if (hasDisliked) {
+        material.dislikedBy = material.dislikedBy.filter(id => id !== userId);
+        material.downvotes = Math.max(0, material.downvotes - 1);
+      }
+      // Add like
+      material.likedBy.push(userId);
+      material.upvotes += 1;
+    }
   } else if (voteType === "downvote") {
-    material.downvotes += 1;
+    if (hasDisliked) {
+      // User already disliked - remove dislike
+      material.dislikedBy = material.dislikedBy.filter(id => id !== userId);
+      material.downvotes = Math.max(0, material.downvotes - 1);
+    } else {
+      // Remove like if exists
+      if (hasLiked) {
+        material.likedBy = material.likedBy.filter(id => id !== userId);
+        material.upvotes = Math.max(0, material.upvotes - 1);
+      }
+      // Add dislike
+      material.dislikedBy.push(userId);
+      material.downvotes += 1;
+    }
   } else {
     return res.status(400).json({ error: "Invalid vote type" });
   }
@@ -150,7 +187,153 @@ app.post("/materials/:id/vote", (req, res) => {
     material: material,
     upvotes: material.upvotes,
     downvotes: material.downvotes,
+    hasLiked: material.likedBy.includes(userId),
+    hasDisliked: material.dislikedBy.includes(userId),
   });
+});
+
+// Get user's vote status for all materials
+app.get("/materials/vote-status/:userId", (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const statusMap = {};
+
+  Materials.forEach(material => {
+    if (!material.likedBy) material.likedBy = [];
+    if (!material.dislikedBy) material.dislikedBy = [];
+    statusMap[material.id] = {
+      hasLiked: material.likedBy.includes(userId),
+      hasDisliked: material.dislikedBy.includes(userId),
+    };
+  });
+
+  res.json(statusMap);
+});
+
+// User authentication endpoints
+app.post("/auth/login", (req, res) => {
+  const { email, password } = req.body;
+
+  const user = Users.find((u) => u.email === email && u.password === password);
+  if (!user) {
+    return res.status(401).json({ error: "Invalid email or password" });
+  }
+
+  // Don't send password back
+  const { password: _, ...userWithoutPassword } = user;
+  res.json({ success: true, user: userWithoutPassword });
+});
+
+app.post("/auth/register", (req, res) => {
+  const { name, email, password } = req.body;
+
+  // Check if user already exists
+  const existingUser = Users.find((u) => u.email === email);
+  if (existingUser) {
+    return res.status(400).json({ error: "User with this email already exists" });
+  }
+
+  // Create new user
+  const newUser = {
+    id: Users.length + 1,
+    name,
+    email,
+    password, // In production, hash this!
+    coursesRecentlyViewed: [],
+    coursesMostViewed: [],
+    coursesLiked: [],
+    coursesDisliked: [],
+  };
+
+  Users.push(newUser);
+
+  // Don't send password back
+  const { password: _, ...userWithoutPassword } = newUser;
+  res.json({ success: true, user: userWithoutPassword });
+});
+
+// User tracking endpoints
+app.post("/users/:userId/courses/:courseId/view", (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const courseId = parseInt(req.params.courseId);
+
+  const user = Users.find((u) => u.id === userId);
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  // Add to recently viewed
+  const now = new Date().toISOString();
+  user.coursesRecentlyViewed.unshift({ courseId, viewedAt: now });
+  // Keep only last 10
+  if (user.coursesRecentlyViewed.length > 10) {
+    user.coursesRecentlyViewed = user.coursesRecentlyViewed.slice(0, 10);
+  }
+
+  // Update most viewed
+  const mostViewed = user.coursesMostViewed.find((cv) => cv.courseId === courseId);
+  if (mostViewed) {
+    mostViewed.viewCount += 1;
+  } else {
+    user.coursesMostViewed.push({ courseId, viewCount: 1 });
+  }
+
+  // Sort by view count
+  user.coursesMostViewed.sort((a, b) => b.viewCount - a.viewCount);
+
+  res.json({ success: true, user });
+});
+
+app.post("/users/:userId/courses/:courseId/like", (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const courseId = parseInt(req.params.courseId);
+
+  const user = Users.find((u) => u.id === userId);
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  // Remove from disliked if exists
+  user.coursesDisliked = user.coursesDisliked.filter((id) => id !== courseId);
+
+  // Add to liked if not already there
+  if (!user.coursesLiked.includes(courseId)) {
+    user.coursesLiked.push(courseId);
+  }
+
+  res.json({ success: true, user });
+});
+
+app.post("/users/:userId/courses/:courseId/dislike", (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const courseId = parseInt(req.params.courseId);
+
+  const user = Users.find((u) => u.id === userId);
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  // Remove from liked if exists
+  user.coursesLiked = user.coursesLiked.filter((id) => id !== courseId);
+
+  // Add to disliked if not already there
+  if (!user.coursesDisliked.includes(courseId)) {
+    user.coursesDisliked.push(courseId);
+  }
+
+  res.json({ success: true, user });
+});
+
+app.get("/users/:userId", (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const user = Users.find((u) => u.id === userId);
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  // Don't send password back
+  const { password: _, ...userWithoutPassword } = user;
+  res.json(userWithoutPassword);
 });
 
 app.listen(3000, () => {

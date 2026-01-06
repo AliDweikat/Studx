@@ -20,6 +20,8 @@
             
             <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">EN</button>
 
+            <a href="pages/profile.html" id="profileLink" style="display:none; margin-right: 15px; color: var(--accent-main); text-decoration: none; font-weight: 600;" data-i18n="nav_profile">Profil</a>
+
             <a href="pages/login.html" class="btn-login" data-i18n="nav_login">Giriş Yap</a>
         </div>
     </nav>
@@ -34,7 +36,16 @@
     <main class="container">
         <h2 style="text-align:center; color: var(--accent-main); margin-bottom: 30px;" data-i18n="section_faculties">Fakülteler</h2>
         
-        <div class="grid"></div>
+        <div class="grid" id="facultiesGrid"></div>
+
+        <!-- User-specific sections (only shown if logged in) -->
+        <div id="userSections" style="display: none;">
+            <h2 style="text-align:center; color: var(--accent-main); margin-top: 60px; margin-bottom: 30px;" data-i18n="recent_courses">Son Görüntülenen Dersler</h2>
+            <div class="grid" id="recentCoursesGrid"></div>
+
+            <h2 style="text-align:center; color: var(--accent-main); margin-top: 60px; margin-bottom: 30px;" data-i18n="most_viewed_courses">En Çok Görüntülenen Dersler</h2>
+            <div class="grid" id="mostViewedCoursesGrid"></div>
+        </div>
     </main>
 
 </body>

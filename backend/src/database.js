@@ -137,6 +137,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/",
     upvotes: 12,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked this material
+    dislikedBy: [], // Array of user IDs who disliked this material
   },
   {
     id: 2,
@@ -147,6 +149,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/resource-index/",
     upvotes: 8,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 3,
@@ -158,6 +162,8 @@ const Materials = [
     url: "https://uzem.mu.edu.tr/tr/ders-yonetim-sistemi-kullanimi-4086",
     upvotes: 15,
     downvotes: 2,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 4,
@@ -169,6 +175,8 @@ const Materials = [
     url: "https://library.mu.edu.tr/tr-TR/AcikDers/List",
     upvotes: 20,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Algorithms (Course 2)
   {
@@ -181,6 +189,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2012/resources/",
     upvotes: 18,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 6,
@@ -192,6 +202,8 @@ const Materials = [
     url: "https://www.youtube.com/@MSKUUZEM",
     upvotes: 14,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 7,
@@ -202,6 +214,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/pages/exams/",
     upvotes: 22,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 8,
@@ -212,6 +226,8 @@ const Materials = [
     url: "https://leetcode.com",
     upvotes: 25,
     downvotes: 2,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Database Systems (Course 3)
   {
@@ -224,6 +240,8 @@ const Materials = [
     url: "https://15445.courses.cs.cmu.edu/fall2025/assignments.html",
     upvotes: 16,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 10,
@@ -234,6 +252,8 @@ const Materials = [
     url: "https://www.youtube.com/playlist?list=PLSE8ODhjZXjYDBpQnSymaectKjxCy6BYq",
     upvotes: 11,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 11,
@@ -245,6 +265,8 @@ const Materials = [
     url: "https://muweb.mu.edu.tr/Newfiles/44/44/%C3%96%C4%9Frenci%20Kullan%C4%B1m%20K%C4%B1lavuzu%20%281%29.pdf",
     upvotes: 13,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 12,
@@ -255,6 +277,8 @@ const Materials = [
     url: "https://sqlfiddle.com",
     upvotes: 9,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Web Development (Course 4)
   {
@@ -267,6 +291,8 @@ const Materials = [
     url: "https://developer.mozilla.org/en-US/docs/Learn_web_development",
     upvotes: 19,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 14,
@@ -277,6 +303,8 @@ const Materials = [
     url: "https://www.freecodecamp.org/learn/responsive-web-design-v9/",
     upvotes: 17,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 15,
@@ -287,6 +315,8 @@ const Materials = [
     url: "https://www.freecodecamp.org/learn/responsive-web-design-v9/",
     upvotes: 10,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 16,
@@ -297,6 +327,8 @@ const Materials = [
     url: "https://developer.mozilla.org/en-US/",
     upvotes: 28,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Circuit Analysis (Course 5)
   {
@@ -309,6 +341,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/",
     upvotes: 14,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 18,
@@ -320,6 +354,8 @@ const Materials = [
     url: "https://learn.mit.edu/search?resource=4717",
     upvotes: 12,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 19,
@@ -330,6 +366,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/pages/exams/",
     upvotes: 11,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 20,
@@ -340,6 +378,8 @@ const Materials = [
     url: "https://www.circuitlab.com",
     upvotes: 15,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Calculus I (Course 15)
   {
@@ -352,6 +392,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/pages/exams/",
     upvotes: 21,
     downvotes: 2,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 22,
@@ -362,6 +404,8 @@ const Materials = [
     url: "https://www.khanacademy.org/math/calculus-1",
     upvotes: 19,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 23,
@@ -372,6 +416,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/pages/exams/",
     upvotes: 24,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 24,
@@ -383,6 +429,8 @@ const Materials = [
     url: "https://library.mu.edu.tr/tr-TR/AcikDers/List",
     upvotes: 30,
     downvotes: 2,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Physics I (Course 17)
   {
@@ -394,6 +442,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/8-01l-physics-i-classical-mechanics-fall-2005/pages/lecture-notes/",
     upvotes: 16,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 26,
@@ -404,6 +454,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/pages/online-textbook/",
     upvotes: 13,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 27,
@@ -415,6 +467,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/8-01sc-classical-mechanics-fall-2016/",
     upvotes: 17,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 28,
@@ -425,6 +479,8 @@ const Materials = [
     url: "https://www.physicsclassroom.com",
     upvotes: 20,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Anatomy (Course 20)
   {
@@ -436,6 +492,8 @@ const Materials = [
     url: "https://openstax.org/details/books/anatomy-and-physiology-2e/",
     upvotes: 15,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 30,
@@ -446,6 +504,8 @@ const Materials = [
     url: "https://www.youtube.com/playlist?list=PL5dA4PjS9Jy4eewMbinO0hNZd3uS2LF2h",
     upvotes: 12,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 31,
@@ -457,6 +517,8 @@ const Materials = [
     url: "https://uzem.mu.edu.tr/Newfiles/1541/dokuman/dys-kilavuz_pdf.pdf",
     upvotes: 18,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 32,
@@ -468,6 +530,8 @@ const Materials = [
     url: "https://www.visiblebody.com",
     upvotes: 22,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Physiology (Course 21)
   {
@@ -479,6 +543,8 @@ const Materials = [
     url: "https://openstax.org/details/books/anatomy-and-physiology-2e/",
     upvotes: 14,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 34,
@@ -490,6 +556,8 @@ const Materials = [
     url: "https://www.youtube.com/playlist?list=PL5dA4PjS9Jy4eewMbinO0hNZd3uS2LF2h",
     upvotes: 11,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 35,
@@ -501,6 +569,8 @@ const Materials = [
     url: "https://muweb.mu.edu.tr/Newfiles/44/44/%C3%96%C4%9Frenci%20Kullan%C4%B1m%20K%C4%B1lavuzu%20%281%29.pdf",
     upvotes: 16,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 36,
@@ -512,6 +582,8 @@ const Materials = [
     url: "https://library.mu.edu.tr/tr-TR/AcikDers/List",
     upvotes: 13,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Biochemistry (Course 35)
   {
@@ -524,6 +596,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/7-05-general-biochemistry-spring-2020/download/",
     upvotes: 17,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 38,
@@ -534,6 +608,8 @@ const Materials = [
     url: "https://www.youtube.com/playlist?list=PLUl4u3cNGP62wNcIMfinU64CAfreShjpt",
     upvotes: 14,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 39,
@@ -544,6 +620,8 @@ const Materials = [
     url: "https://ocw.mit.edu/courses/7-05-general-biochemistry-spring-2020/resources/exams-with-solutions/",
     upvotes: 19,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 40,
@@ -555,6 +633,8 @@ const Materials = [
     url: "https://library.mu.edu.tr/tr-TR/AcikDers/List",
     upvotes: 15,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Drawing Fundamentals (Course 37)
   {
@@ -567,6 +647,8 @@ const Materials = [
     url: "https://drawabox.com",
     upvotes: 10,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 42,
@@ -577,6 +659,8 @@ const Materials = [
     url: "https://drawabox.com/lesson/0",
     upvotes: 9,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 43,
@@ -588,6 +672,8 @@ const Materials = [
     url: "https://drawabox.com",
     upvotes: 8,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 44,
@@ -598,6 +684,8 @@ const Materials = [
     url: "https://drawabox.com",
     upvotes: 12,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Music Theory (Course 43)
   {
@@ -609,6 +697,8 @@ const Materials = [
     url: "https://www.musictheory.net/lessons",
     upvotes: 11,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 46,
@@ -619,6 +709,8 @@ const Materials = [
     url: "https://www.musictheory.net/exercises",
     upvotes: 10,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 47,
@@ -629,6 +721,8 @@ const Materials = [
     url: "https://www.musictheory.net/exercises",
     upvotes: 9,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 48,
@@ -639,6 +733,8 @@ const Materials = [
     url: "https://www.musictheory.net",
     upvotes: 14,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   // Art History (Course 48)
   {
@@ -651,6 +747,8 @@ const Materials = [
     url: "https://artsandculture.google.com",
     upvotes: 13,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 50,
@@ -661,6 +759,8 @@ const Materials = [
     url: "https://www.youtube.com/@crashcourse/playlists",
     upvotes: 11,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 51,
@@ -672,6 +772,8 @@ const Materials = [
     url: "https://uzem.mu.edu.tr/tr/sik-sorulan-sorular-8424",
     upvotes: 12,
     downvotes: 0,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
   {
     id: 52,
@@ -683,7 +785,49 @@ const Materials = [
     url: "https://library.mu.edu.tr/tr-TR/AcikDers/List",
     upvotes: 18,
     downvotes: 1,
+    likedBy: [], // Array of user IDs who liked
+    dislikedBy: [], // Array of user IDs who disliked
   },
 ];
 
-module.exports = { Faculty, Departments, Courses, Materials };
+// Users with tracking data
+const Users = [
+  {
+    id: 1,
+    name: "Ahmed Student",
+    email: "ahmed@student.msku.edu.tr",
+    password: "password123", // In production, this should be hashed
+    coursesRecentlyViewed: [
+      { courseId: 1, viewedAt: new Date("2026-01-05T10:00:00").toISOString() },
+      { courseId: 2, viewedAt: new Date("2026-01-05T14:30:00").toISOString() },
+      { courseId: 15, viewedAt: new Date("2026-01-06T09:15:00").toISOString() },
+    ],
+    coursesMostViewed: [
+      { courseId: 1, viewCount: 15 },
+      { courseId: 2, viewCount: 12 },
+      { courseId: 15, viewCount: 8 },
+      { courseId: 17, viewCount: 5 },
+    ],
+    coursesLiked: [1, 2, 15],
+    coursesDisliked: [20],
+  },
+  {
+    id: 2,
+    name: "Ayşe Student",
+    email: "ayse@student.msku.edu.tr",
+    password: "password123",
+    coursesRecentlyViewed: [
+      { courseId: 20, viewedAt: new Date("2026-01-05T11:00:00").toISOString() },
+      { courseId: 21, viewedAt: new Date("2026-01-05T15:00:00").toISOString() },
+    ],
+    coursesMostViewed: [
+      { courseId: 20, viewCount: 20 },
+      { courseId: 21, viewCount: 18 },
+      { courseId: 35, viewCount: 10 },
+    ],
+    coursesLiked: [20, 21, 35],
+    coursesDisliked: [1],
+  },
+];
+
+module.exports = { Faculty, Departments, Courses, Materials, Users };
