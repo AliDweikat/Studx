@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "https://studx-backend.onrender.com";
 
 // Helper function to get correct path to pages directory
 function getPagesPath(filename) {
