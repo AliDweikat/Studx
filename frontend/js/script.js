@@ -409,10 +409,10 @@ async function fetchMaterials() {
                         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
                             <span class="badge" style="background-color: ${typeColor}; color: #444;">${typeIcon} ${material.type}</span>
                             <div class="vote-container">
-                                <button class="vote-btn upvote" onclick="voteMaterial(${material.id}, 'upvote')" title="Upvote">
+                                <button class="vote-btn upvote" onclick="voteMaterial(${material.id}, 'upvote', event)" title="Upvote">
                                     👍 <span id="upvotes-${material.id}">${material.upvotes}</span>
                                 </button>
-                                <button class="vote-btn downvote" onclick="voteMaterial(${material.id}, 'downvote')" title="Downvote">
+                                <button class="vote-btn downvote" onclick="voteMaterial(${material.id}, 'downvote', event)" title="Downvote">
                                     👎 <span id="downvotes-${material.id}">${material.downvotes}</span>
                                 </button>
                             </div>
@@ -434,7 +434,7 @@ async function fetchMaterials() {
     }
 }
 
-async function voteMaterial(materialId, voteType) {
+async function voteMaterial(materialId, voteType, event) {
     try {
         const response = await fetch(`${API_BASE_URL}/materials/${materialId}/vote`, {
             method: 'POST',
@@ -462,12 +462,14 @@ async function voteMaterial(materialId, voteType) {
         }
 
         // Visual feedback
-        const button = event.target.closest('.vote-btn');
-        if (button) {
-            button.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 200);
+        if (event && event.target) {
+            const button = event.target.closest('.vote-btn');
+            if (button) {
+                button.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    button.style.transform = 'scale(1)';
+                }, 200);
+            }
         }
 
     } catch (error) {
