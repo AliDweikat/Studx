@@ -1,9 +1,9 @@
 /* --- Color Palette (Your Variables) --- */
 :root {
-    --bg-cream:   #FFF5E4; /* Main Background */
-    --bg-pink:    #FFE3E1; /* Secondary Background */
-    --accent-light:#FFD1D1; /* Borders / Hovers */
-    --accent-main: #FF9494; /* Navbar / Buttons / Headings */
+    --bg-cream:   #F5F0E8; /* Main Background - more muted cream */
+    --bg-pink:    #F0E6E4; /* Secondary Background - softer pink */
+    --accent-light:#E8D4D2; /* Borders / Hovers - muted light pink */
+    --accent-main: #D4A5A0; /* Navbar / Buttons / Headings - muted rose */
     
     --text-dark:  #4a4a4a; /* Dark Grey (for readability on light bg) */
     --white:      #ffffff;
@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(255, 148, 148, 0.2); /* Soft red shadow */
+    box-shadow: 0 4px 10px rgba(212, 165, 160, 0.2); /* Soft muted shadow */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -68,7 +68,7 @@ body {
 /* --- Hero Section --- */
 .hero {
     /* Using a gradient of your palette over the image */
-    background: linear-gradient(rgba(255, 227, 225, 0.8), rgba(255, 148, 148, 0.6)), url('../images/university-icon.png');
+    background: linear-gradient(rgba(240, 230, 228, 0.8), rgba(212, 165, 160, 0.6)), url('../images/university-icon.png');
     background-size: cover;
     background-position: center;
     color: var(--text-dark);
@@ -126,7 +126,7 @@ body {
     background: var(--white);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(255, 148, 148, 0.15); /* Colored Shadow */
+    box-shadow: 0 10px 20px rgba(212, 165, 160, 0.15); /* Colored Shadow */
     transition: transform 0.3s;
     border: 2px solid var(--accent-light);
 }
@@ -168,8 +168,8 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.badge.PDF { background-color: #FF9494; }   /* Using your main red */
-.badge.VIDEO { background-color: #FFD1D1; color: #444; } /* Using your light pink */
+.badge.PDF { background-color: #D4A5A0; }   /* Using your muted rose */
+.badge.VIDEO { background-color: #E8D4D2; color: #444; } /* Using your muted light pink */
 .badge.LINK { background-color: #A3E4D7; color: #444; } /* Soft Green specifically for links */
 
 .action-row {

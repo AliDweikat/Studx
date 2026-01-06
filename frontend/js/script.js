@@ -48,6 +48,11 @@ async function fetchFaculties(container) {
 
     try {
         const response = await fetch(`${API_BASE_URL}/faculty`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const faculties = await response.json();
 
         container.innerHTML = ""; // Clear loading message
@@ -75,7 +80,7 @@ async function fetchFaculties(container) {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error("Fetch error:", error);
         container.innerHTML = `<p style="color:red; text-align:center;">${t.error_fetch}</p>`;
     }
 }

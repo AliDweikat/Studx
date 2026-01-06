@@ -23,7 +23,7 @@ const translations = {
         hero_btn: "Hemen Başla",
         section_faculties: "Fakülteler",
         loading: "Fakülteler yükleniyor...",
-        error_fetch: "Backend (Port 3000) kapalı.",
+        error_fetch: "Sunucu (Port 3000) kapalı.",
         empty_list: "Fakülte bulunamadı.",
         view_btn: "Bölümleri Gör"
     }
