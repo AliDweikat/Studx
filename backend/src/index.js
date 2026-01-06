@@ -261,9 +261,21 @@ app.post("/users/:userId/courses/:courseId/view", (req, res) => {
     return res.status(404).json({ error: "User not found" });
   }
 
-  // Add to recently viewed
+  // Update recently viewed - use map to update existing or add new
   const now = new Date().toISOString();
-  user.coursesRecentlyViewed.unshift({ courseId, viewedAt: now });
+  const existingIndex = user.coursesRecentlyViewed.findIndex((cv) => cv.courseId === courseId);
+  
+  if (existingIndex !== -1) {
+    // Update existing entry's viewedAt timestamp
+    user.coursesRecentlyViewed[existingIndex].viewedAt = now;
+    // Move to front
+    const updated = user.coursesRecentlyViewed.splice(existingIndex, 1)[0];
+    user.coursesRecentlyViewed.unshift(updated);
+  } else {
+    // Add new entry at the beginning
+    user.coursesRecentlyViewed.unshift({ courseId, viewedAt: now });
+  }
+  
   // Keep only last 10
   if (user.coursesRecentlyViewed.length > 10) {
     user.coursesRecentlyViewed = user.coursesRecentlyViewed.slice(0, 10);

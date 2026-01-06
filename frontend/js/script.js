@@ -153,9 +153,17 @@ function updatePageLanguage() {
     // 3. Update auth UI after language change
     updateAuthUI();
     
-    // 4. Reload user courses if on homepage and logged in
-    if (document.getElementById('recentCoursesGrid') && getCurrentUser()) {
-        loadUserCoursesOnHomepage();
+    // 4. Update translations for user courses if on homepage (without reloading data)
+    const recentGrid = document.getElementById('recentCoursesGrid');
+    const mostViewedGrid = document.getElementById('mostViewedCoursesGrid');
+    if (recentGrid && mostViewedGrid) {
+        // Just update the translations for existing elements, don't reload data
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
     }
 }
 
@@ -787,10 +795,12 @@ async function loadUserCoursesOnHomepage() {
                 const course = allCourses.find(c => c.id === view.courseId);
                 if (course) {
                     const t = translations[currentLang] || translations.tr;
+                    const viewedDate = new Date(view.viewedAt).toLocaleDateString();
                     const card = `
                         <div class="card" style="cursor: pointer;" onclick="trackCourseView(${course.id}); window.location.href='${getPagesPath('materials.html')}?courseId=${course.id}'">
                             <div class="card-content">
                                 <h3>${course.name}</h3>
+                                <p style="color: #666; font-size: 0.9rem;">${t.viewed_on || 'Viewed on'}: ${viewedDate}</p>
                                 <div class="action-row">
                                     <a href="${getPagesPath('materials.html')}?courseId=${course.id}" class="download-link" onclick="event.stopPropagation(); trackCourseView(${course.id});">${t.view_materials || "View Materials"} →</a>
                                 </div>
@@ -802,7 +812,7 @@ async function loadUserCoursesOnHomepage() {
             });
         } else {
             const t = translations[currentLang] || translations.tr;
-            recentGrid.innerHTML = `<p style="text-align:center; color: #666; grid-column: 1 / -1;" data-i18n="no_recent_courses">${t.no_recent_courses || "No recently viewed courses."}</p>`;
+            recentGrid.innerHTML = `<p style="text-align:center; color: #666;" data-i18n="no_recent_courses">${t.no_recent_courses || "No recently viewed courses."}</p>`;
         }
 
         // Display most viewed courses (limit to 6)
@@ -831,11 +841,16 @@ async function loadUserCoursesOnHomepage() {
             });
         } else {
             const t = translations[currentLang] || translations.tr;
-            mostViewedGrid.innerHTML = `<p style="text-align:center; color: #666; grid-column: 1 / -1;" data-i18n="no_most_viewed_courses">${t.no_most_viewed_courses || "No most viewed courses yet."}</p>`;
+            mostViewedGrid.innerHTML = `<p style="text-align:center; color: #666;" data-i18n="no_most_viewed_courses">${t.no_most_viewed_courses || "No most viewed courses."}</p>`;
         }
 
-        // Update translations for dynamic content
-        updatePageLanguage();
+        // Update translations for dynamically created elements only
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLang] && translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
 
     } catch (error) {
         console.error("Error loading user courses:", error);
