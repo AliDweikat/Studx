@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "type": "pdf",
+      "title": "Introduction to Calculus",
+      "description": "Chapter 1 notes on limits and derivatives.",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "type": "video",
+      "title": "Physics 101: Lecture 3",
+      "description": "Video explaining Newton's Second Law.",
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "type": "link",
+      "title": "Interactive Periodic Table",
+      "description": "An external tool for chemistry students.",
+      "link": "#"
+    },
+    {
+      "id": 4,
+      "type": "pdf",
+      "title": "Algorithms Problem Set 2",
+      "description": "Practice questions for the midterm.",
+      "link": "#"
+    },
+    {
+      "id": 5,
+      "type": "video",
+      "title": "Microeconomics: Supply & Demand",
+      "description": "Core concepts in a 15-minute summary.",
+      "link": "#"
+    }
+  ]
