@@ -1,7 +1,11 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const { Faculty, Departments, Courses, Materials, Users } = require("./database");
+const { Faculty, Departments, Courses, Materials, Users: defaultUsers } = require("./database");
+const { initializeUsers, saveUsers } = require("./persistence");
+
+// Initialize Users with persistence (load from file or use defaults)
+let Users = initializeUsers(defaultUsers);
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -245,6 +249,7 @@ app.post("/auth/register", (req, res) => {
   };
 
   Users.push(newUser);
+  saveUsers(Users); // Persist to file
 
   // Don't send password back
   const { password: _, ...userWithoutPassword } = newUser;
@@ -292,6 +297,7 @@ app.post("/users/:userId/courses/:courseId/view", (req, res) => {
   // Sort by view count
   user.coursesMostViewed.sort((a, b) => b.viewCount - a.viewCount);
 
+  saveUsers(Users); // Persist to file
   res.json({ success: true, user });
 });
 
@@ -312,6 +318,7 @@ app.post("/users/:userId/courses/:courseId/like", (req, res) => {
     user.coursesLiked.push(courseId);
   }
 
+  saveUsers(Users); // Persist to file
   res.json({ success: true, user });
 });
 
@@ -332,6 +339,7 @@ app.post("/users/:userId/courses/:courseId/dislike", (req, res) => {
     user.coursesDisliked.push(courseId);
   }
 
+  saveUsers(Users); // Persist to file
   res.json({ success: true, user });
 });
 

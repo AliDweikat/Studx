@@ -12,6 +12,37 @@ function getPagesPath(filename) {
     }
 }
 
+// Cookie helper functions for session management
+function setCookie(name, value, days = 7) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+    // Use path=/ to ensure cookie is available across all pages
+    // SameSite=Lax for security, works with localhost
+    const cookieString = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+    document.cookie = cookieString;
+    // Verify cookie was set
+    if (!getCookie(name)) {
+        console.warn(`Failed to set cookie: ${name}`);
+    }
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) {
+            return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+}
+
 // 1. Check if user has a saved language, otherwise default to Turkish ('tr')
 let currentLang = localStorage.getItem('studx_lang') || 'tr';
 
@@ -601,8 +632,8 @@ async function handleLogin(e) {
             return;
         }
 
-        // Store user data
-        localStorage.setItem('studx_user', JSON.stringify(result.user));
+        // Store user data in cookie
+        setCookie('studx_user', JSON.stringify(result.user), 7);
         
         // Update auth UI
         updateAuthUI();
@@ -642,8 +673,8 @@ async function handleRegister(e) {
             return;
         }
 
-        // Store user data
-        localStorage.setItem('studx_user', JSON.stringify(result.user));
+        // Store user data in cookie
+        setCookie('studx_user', JSON.stringify(result.user), 7);
         
         // Update auth UI
         updateAuthUI();
@@ -658,9 +689,9 @@ async function handleRegister(e) {
     }
 }
 
-// Helper function to get current user
+// Helper function to get current user from cookie
 function getCurrentUser() {
-    const userStr = localStorage.getItem('studx_user');
+    const userStr = getCookie('studx_user');
     return userStr ? JSON.parse(userStr) : null;
 }
 
@@ -730,7 +761,7 @@ function handleLogout() {
         : 'Are you sure you want to logout?';
     
     if (confirm(confirmMsg)) {
-        localStorage.removeItem('studx_user');
+        deleteCookie('studx_user');
         
         // Update UI immediately
         updateAuthUI();
