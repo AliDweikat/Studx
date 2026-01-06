@@ -1,6 +1,6 @@
 const translations = {
     en: {
-        brand: "🏛️ MSKU Studx",
+        brand: "MSKU Studx",
         nav_home: "Home",
         nav_materials: "Materials",
         nav_login: "Log In",
@@ -52,7 +52,7 @@ const translations = {
         login_required: "Please log in to view your profile."
     },
     tr: {
-        brand: "🏛️ MSKU Studx",
+        brand: "MSKU Studx",
         nav_home: "Ana Sayfa",
         nav_materials: "Ders Materyalleri",
         nav_login: "Giriş Yap",

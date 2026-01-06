@@ -179,7 +179,12 @@ function updatePageLanguage() {
     const key = element.getAttribute("data-i18n");
     // Look up the word in translations.js
     if (translations[currentLang][key]) {
-      element.textContent = translations[currentLang][key];
+      // Special handling for brand element - only update the span, not the whole element
+      if (key === "brand" && element.querySelector("span")) {
+        element.querySelector("span").textContent = translations[currentLang][key];
+      } else {
+        element.textContent = translations[currentLang][key];
+      }
     }
   });
 

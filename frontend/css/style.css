@@ -40,6 +40,19 @@ body {
   gap: 10px;
 }
 
+.brand-logo {
+  height: 40px;
+  width: auto;
+  max-width: 40px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.brand span {
+  display: inline-block;
+}
+
 .nav-links a {
   color: var(--accent-main);
   text-decoration: none;
