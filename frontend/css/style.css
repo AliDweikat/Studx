@@ -1,214 +1,226 @@
 /* --- Color Palette (Your Variables) --- */
 :root {
-    --bg-cream:   #F5F0E8; /* Main Background - more muted cream */
-    --bg-pink:    #F0E6E4; /* Secondary Background - softer pink */
-    --accent-light:#E8D4D2; /* Borders / Hovers - muted light pink */
-    --accent-main: #D4A5A0; /* Navbar / Buttons / Headings - muted rose */
-    
-    --text-dark:  #4a4a4a; /* Dark Grey (for readability on light bg) */
-    --white:      #ffffff;
+  --bg-cream: #f5f0e8; /* Main Background - more muted cream */
+  --bg-pink: #f0e6e4; /* Secondary Background - softer pink */
+  --accent-light: #e8d4d2; /* Borders / Hovers - muted light pink */
+  --accent-main: #d4a5a0; /* Navbar / Buttons / Headings - muted rose */
+
+  --text-dark: #4a4a4a; /* Dark Grey (for readability on light bg) */
+  --white: #ffffff;
 }
 
 body {
-    margin: 0;
-    font-family: 'Delius', 'Segoe UI', sans-serif; /* Added Delius if you have it, else standard font */
-    background-color: var(--bg-cream);
-    color: var(--text-dark);
+  margin: 0;
+  font-family: "Delius", "Segoe UI", sans-serif; /* Added Delius if you have it, else standard font */
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
 }
 
 /* --- Navigation Bar --- */
 .navbar {
-    background-color: var(--bg-pink); /* Soft Pink Header */
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(212, 165, 160, 0.2); /* Soft muted shadow */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 3px solid var(--accent-light);
+  background-color: var(--bg-pink); /* Soft Pink Header */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(212, 165, 160, 0.2); /* Soft muted shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid var(--accent-light);
 }
 
 .brand {
-    color: var(--accent-main);
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  color: var(--accent-main);
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .nav-links a {
-    color: var(--accent-main);
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-    transition: color 0.3s;
+  color: var(--accent-main);
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: var(--text-dark);
+  color: var(--text-dark);
 }
 
 .btn-login {
-    background-color: var(--accent-main);
-    color: var(--white) !important;
-    padding: 8px 25px;
-    border-radius: 25px;
-    transition: background 0.3s, transform 0.2s;
+  background-color: var(--accent-main);
+  color: var(--white) !important;
+  padding: 8px 25px;
+  border-radius: 25px;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .btn-login:hover {
-    background-color: var(--accent-light);
-    transform: scale(1.05);
+  background-color: var(--accent-light);
+  transform: scale(1.05);
 }
 
 /* --- Hero Section --- */
 .hero {
-    /* Using a gradient of your palette over the image */
-    background: linear-gradient(rgba(240, 230, 228, 0.8), rgba(212, 165, 160, 0.6)), url('../images/university-icon.png');
-    background-size: cover;
-    background-position: center;
-    color: var(--text-dark);
-    text-align: center;
-    padding: 100px 20px;
-    margin-bottom: 40px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+  /* Using a gradient of your palette over the image */
+  background: linear-gradient(
+      rgba(240, 230, 228, 0.8),
+      rgba(212, 165, 160, 0.6)
+    ),
+    url("../images/university-icon.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--text-dark);
+  text-align: center;
+  padding: 100px 20px;
+  margin-bottom: 40px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    color: var(--white);
-    text-shadow: 2px 2px 0px var(--accent-main); /* Pop effect */
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  color: var(--white);
+  text-shadow: 2px 2px 0px var(--accent-main); /* Pop effect */
 }
 
 /* --- Search Bar --- */
 .search-wrapper {
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-    position: relative;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  position: relative;
 }
 
 .search-input {
-    width: 100%;
-    padding: 15px 25px;
-    border: 3px solid var(--accent-light);
-    border-radius: 50px;
-    font-size: 1rem;
-    outline: none;
-    background-color: var(--white);
-    color: var(--text-dark);
-    transition: border-color 0.3s;
+  width: 100%;
+  padding: 15px 25px;
+  border: 3px solid var(--accent-light);
+  border-radius: 50px;
+  font-size: 1rem;
+  outline: none;
+  background-color: var(--white);
+  color: var(--text-dark);
+  transition: border-color 0.3s;
 }
 
 .search-input:focus {
-    border-color: var(--accent-main);
+  border-color: var(--accent-main);
 }
 
 /* --- Cards Grid --- */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 50px 20px;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .card {
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(212, 165, 160, 0.15); /* Colored Shadow */
-    transition: transform 0.3s;
-    border: 2px solid var(--accent-light);
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(212, 165, 160, 0.15); /* Colored Shadow */
+  transition: transform 0.3s;
+  border: 2px solid var(--accent-light);
 }
 
 .card:hover {
-    transform: translateY(-7px);
-    border-color: var(--accent-main);
+  transform: translateY(-7px);
+  border-color: var(--accent-main);
 }
 
 .card img {
-    border-bottom: 2px solid var(--accent-light);
+  border-bottom: 2px solid var(--accent-light);
 }
 
 .card-content {
-    padding: 20px;
+  padding: 20px;
 }
 
 .card h3 {
-    color: var(--accent-main);
-    margin-top: 0;
-    font-size: 1.4rem;
+  color: var(--accent-main);
+  margin-top: 0;
+  font-size: 1.4rem;
 }
 
 .card p {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.5;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* --- Badges & Actions --- */
 .badge {
-    display: inline-block;
-    padding: 5px 15px;
-    font-size: 0.75rem;
-    border-radius: 15px;
-    color: var(--white);
-    font-weight: bold;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 0.75rem;
+  border-radius: 15px;
+  color: var(--white);
+  font-weight: bold;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.badge.PDF { background-color: #D4A5A0; }   /* Using your muted rose */
-.badge.VIDEO { background-color: #E8D4D2; color: #444; } /* Using your muted light pink */
-.badge.LINK { background-color: #A3E4D7; color: #444; } /* Soft Green specifically for links */
+.badge.PDF {
+  background-color: #d4a5a0;
+} /* Using your muted rose */
+.badge.VIDEO {
+  background-color: #e8d4d2;
+  color: #444;
+} /* Using your muted light pink */
+.badge.LINK {
+  background-color: #a3e4d7;
+  color: #444;
+} /* Soft Green specifically for links */
 
 .action-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px dashed var(--bg-pink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px dashed var(--bg-pink);
 }
 
 .download-link {
-    text-decoration: none;
-    color: var(--accent-main);
-    font-weight: bold;
-    border-bottom: 2px solid transparent;
-    transition: border 0.3s;
+  text-decoration: none;
+  color: var(--accent-main);
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
 }
 
 .download-link:hover {
-    border-bottom: 2px solid var(--accent-main);
+  border-bottom: 2px solid var(--accent-main);
 }
 
 /* ... existing CSS ... */
 
 /* Language Button Style */
 .lang-btn {
-    background-color: var(--white);
-    color: var(--accent-main);
-    border: 2px solid var(--accent-main);
-    padding: 5px 10px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 15px;
-    transition: all 0.3s;
+  background-color: var(--white);
+  color: var(--accent-main);
+  border: 2px solid var(--accent-main);
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 15px;
+  transition: all 0.3s;
 }
 
 .lang-btn:hover {
-    background-color: var(--accent-main);
-    color: var(--white);
+  background-color: var(--accent-main);
+  color: var(--white);
 }
