@@ -8,10 +8,20 @@ const translations = {
         hero_subtitle: "Student Lecture Notes and Resource Sharing Platform",
         hero_btn: "Get Started",
         section_faculties: "Faculties",
+        section_departments: "Departments",
+        section_courses: "Courses",
         loading: "Loading faculties...",
+        loading_departments: "Loading departments...",
+        loading_courses: "Loading courses...",
         error_fetch: "Backend (Port 3000) is offline.",
         empty_list: "No faculties found.",
-        view_btn: "View Departments"
+        empty_departments: "No departments found.",
+        empty_courses: "No courses found.",
+        view_btn: "View Departments",
+        view_courses: "View Courses",
+        department_courses: "Department Courses",
+        shared_courses: "Shared Courses",
+        shared: "Shared"
     },
     tr: {
         brand: "🏛️ MSKU Studx",
@@ -22,9 +32,19 @@ const translations = {
         hero_subtitle: "Öğrenci Ders Notu ve Kaynak Paylaşım Platformu",
         hero_btn: "Hemen Başla",
         section_faculties: "Fakülteler",
+        section_departments: "Bölümler",
+        section_courses: "Dersler",
         loading: "Fakülteler yükleniyor...",
+        loading_departments: "Bölümler yükleniyor...",
+        loading_courses: "Dersler yükleniyor...",
         error_fetch: "Sunucu (Port 3000) kapalı.",
         empty_list: "Fakülte bulunamadı.",
-        view_btn: "Bölümleri Gör"
+        empty_departments: "Bölüm bulunamadı.",
+        empty_courses: "Ders bulunamadı.",
+        view_btn: "Bölümleri Gör",
+        view_courses: "Dersleri Gör",
+        department_courses: "Bölüm Dersleri",
+        shared_courses: "Ortak Dersler",
+        shared: "Ortak"
     }
 };

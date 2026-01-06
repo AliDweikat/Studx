@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - MSKU Studx</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <script src="../js/translations.js"></script>
+    <script src="../js/script.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../index.html" class="brand" data-i18n="brand">🏛️ MSKU Studx</a>
+        
+        <div class="nav-links">
+            <a href="../index.html" data-i18n="nav_home">Ana Sayfa</a>
+            <a href="materials.html" data-i18n="nav_materials">Ders Materyalleri</a>
+            
+            <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">EN</button>
+
+            <a href="login.html" class="btn-login" data-i18n="nav_login">Giriş Yap</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 id="facultyName" style="text-align:center; color: var(--accent-main); margin-bottom: 30px;" data-i18n="section_departments">Bölümler</h2>
+        
+        <div class="grid" id="departmentsGrid"></div>
+    </main>
+
+</body>
+</html>
+
