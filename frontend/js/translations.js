@@ -21,7 +21,16 @@ const translations = {
         view_courses: "View Courses",
         department_courses: "Department Courses",
         shared_courses: "Shared Courses",
-        shared: "Shared"
+        shared: "Shared",
+        materials_title: "Course Materials",
+        materials_subtitle: "Search for course materials, lectures, slides, and exams",
+        search_placeholder: "E.g.: Physics, Math, Algorithms...",
+        loading_materials: "Loading materials...",
+        empty_materials: "No materials found.",
+        view_material: "View Material",
+        view_materials: "View Materials",
+        all_types: "All Types",
+        all_courses: "All Courses"
     },
     tr: {
         brand: "🏛️ MSKU Studx",
@@ -45,6 +54,15 @@ const translations = {
         view_courses: "Dersleri Gör",
         department_courses: "Bölüm Dersleri",
         shared_courses: "Ortak Dersler",
-        shared: "Ortak"
+        shared: "Ortak",
+        materials_title: "Ders Materyalleri",
+        materials_subtitle: "Ders materyalleri, dersler, slaytlar ve sınavlar için arama yapın",
+        search_placeholder: "Örn: Fizik, Matematik, Algoritma...",
+        loading_materials: "Materyaller yükleniyor...",
+        empty_materials: "Materyal bulunamadı.",
+        view_material: "Materyali Gör",
+        view_materials: "Materyalleri Gör",
+        all_types: "Tüm Türler",
+        all_courses: "Tüm Dersler"
     }
 };

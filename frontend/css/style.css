@@ -1,9 +1,9 @@
 /* --- Color Palette (Your Variables) --- */
 :root {
-  --bg-cream: #f5f0e8; /* Main Background - more muted cream */
-  --bg-pink: #f0e6e4; /* Secondary Background - softer pink */
-  --accent-light: #e8d4d2; /* Borders / Hovers - muted light pink */
-  --accent-main: #d4a5a0; /* Navbar / Buttons / Headings - muted rose */
+  --bg-cream: #fff5e4; /* Main Background */
+  --bg-pink: #ffe3e1; /* Secondary Background */
+  --accent-light: #ffd1d1; /* Borders / Hovers */
+  --accent-main: #ff9494; /* Navbar / Buttons / Headings */
 
   --text-dark: #4a4a4a; /* Dark Grey (for readability on light bg) */
   --white: #ffffff;
@@ -23,7 +23,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(212, 165, 160, 0.2); /* Soft muted shadow */
+  box-shadow: 0 4px 10px rgba(255, 148, 148, 0.2); /* Soft red shadow */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -69,8 +69,8 @@ body {
 .hero {
   /* Using a gradient of your palette over the image */
   background: linear-gradient(
-      rgba(240, 230, 228, 0.8),
-      rgba(212, 165, 160, 0.6)
+      rgba(255, 227, 225, 0.8),
+      rgba(255, 148, 148, 0.6)
     ),
     url("../images/university-icon.png");
   background-size: cover;
@@ -134,14 +134,19 @@ body {
   background: var(--white);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(212, 165, 160, 0.15); /* Colored Shadow */
-  transition: transform 0.3s;
+  box-shadow: 0 10px 20px rgba(255, 148, 148, 0.15); /* Colored Shadow */
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   border: 2px solid var(--accent-light);
 }
 
 .card:hover {
   transform: translateY(-7px);
   border-color: var(--accent-main);
+  box-shadow: 0 15px 30px rgba(255, 148, 148, 0.25);
+}
+
+.card[style*="cursor: pointer"]:hover {
+  cursor: pointer;
 }
 
 .card img {
@@ -177,10 +182,10 @@ body {
 }
 
 .badge.PDF {
-  background-color: #d4a5a0;
-} /* Using your muted rose */
+  background-color: #ff9494;
+} /* Using your main red */
 .badge.VIDEO {
-  background-color: #e8d4d2;
+  background-color: #ffd1d1;
   color: #444;
 } /* Using your muted light pink */
 .badge.LINK {
@@ -227,4 +232,68 @@ body {
 .lang-btn:hover {
   background-color: var(--accent-main);
   color: var(--white);
+}
+
+/* --- Materials Page Styles --- */
+.material-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.material-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(255, 148, 148, 0.2);
+}
+
+.vote-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.vote-btn {
+  background-color: var(--white);
+  border: 2px solid var(--accent-light);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-dark);
+}
+
+.vote-btn:hover {
+  background-color: var(--accent-light);
+  transform: scale(1.05);
+}
+
+.vote-btn.upvote:hover {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+}
+
+.vote-btn.downvote:hover {
+  border-color: #f44336;
+  background-color: #ffebee;
+}
+
+.vote-btn:active {
+  transform: scale(0.95);
+}
+
+.vote-btn span {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+/* Filter dropdowns */
+select.search-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23444' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
 }

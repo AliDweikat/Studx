@@ -1,7 +1,10 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const { Faculty, Departments, Courses } = require("./database");
+const { Faculty, Departments, Courses, Materials } = require("./database");
+
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
@@ -81,6 +84,75 @@ app.get("/courses/:id", (req, res) => {
   }
   res.json(course);
 });
+
+// Materials endpoints
+app.get("/materials", (req, res) => {
+  const courseId = req.query.courseId;
+  const search = req.query.search;
+  const type = req.query.type;
+
+  let filtered = Materials;
+
+  // Filter by course
+  if (courseId) {
+    filtered = filtered.filter((m) => m.courseId === parseInt(courseId));
+  }
+
+  // Filter by type
+  if (type) {
+    filtered = filtered.filter((m) => m.type === type.toUpperCase());
+  }
+
+  // Search in title and description
+  if (search) {
+    const searchLower = search.toLowerCase();
+    filtered = filtered.filter(
+      (m) =>
+        m.title.toLowerCase().includes(searchLower) ||
+        m.description.toLowerCase().includes(searchLower)
+    );
+  }
+
+  // Sort by upvotes (descending)
+  filtered.sort((a, b) => b.upvotes - a.upvotes);
+
+  res.json(filtered);
+});
+
+app.get("/materials/:id", (req, res) => {
+  const material = Materials.find((m) => m.id === parseInt(req.params.id));
+  if (!material) {
+    return res.status(404).json({ error: "Material not found" });
+  }
+  res.json(material);
+});
+
+// Vote endpoint
+app.post("/materials/:id/vote", (req, res) => {
+  const materialId = parseInt(req.params.id);
+  const { voteType } = req.body; // "upvote" or "downvote"
+
+  const material = Materials.find((m) => m.id === materialId);
+  if (!material) {
+    return res.status(404).json({ error: "Material not found" });
+  }
+
+  if (voteType === "upvote") {
+    material.upvotes += 1;
+  } else if (voteType === "downvote") {
+    material.downvotes += 1;
+  } else {
+    return res.status(400).json({ error: "Invalid vote type" });
+  }
+
+  res.json({
+    success: true,
+    material: material,
+    upvotes: material.upvotes,
+    downvotes: material.downvotes,
+  });
+});
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });

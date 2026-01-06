@@ -1,37 +1,91 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Materyaller - MSKU Studx</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/translations.js"></script>
     <script src="../js/script.js"></script>
-</head>
-<body>
-
+  </head>
+  <body>
     <nav class="navbar">
-        <a href="../index.html" class="brand">🏛️ MSKU Studx</a>
-        <div class="nav-links">
-            <a href="../index.html">Ana Sayfa</a>
-            <a href="#" style="color: var(--msku-gold);">Ders Materyalleri</a>
-            <a href="login.html" class="btn-login">Giriş Yap</a>
-            <button id="langBtn" class="lang-btn">EN</button>
-        </div>
+      <a href="../index.html" class="brand" data-i18n="brand">🏛️ MSKU Studx</a>
+      <div class="nav-links">
+        <a href="../index.html" data-i18n="nav_home">Ana Sayfa</a>
+        <a href="#" data-i18n="nav_materials">Ders Materyalleri</a>
+        <a href="login.html" class="btn-login" data-i18n="nav_login"
+          >Giriş Yap</a
+        >
+        <button id="langBtn" class="lang-btn" onclick="toggleLanguage()">
+          EN
+        </button>
+      </div>
     </nav>
 
-    <main class="container" style="margin-top: 50px;">
-        <h1 style="text-align:center; color: var(--msku-blue);">Ders Materyalleri</h1>
-        <p style="text-align:center; margin-bottom: 40px;">Aradığınız dersin adını veya konusunu yazın.</p>
+    <main class="container" style="margin-top: 50px">
+      <h1
+        style="
+          text-align: center;
+          color: var(--accent-main);
+          margin-bottom: 10px;
+        "
+        data-i18n="materials_title"
+      >
+        Ders Materyalleri
+      </h1>
+      <p
+        style="text-align: center; margin-bottom: 40px"
+        data-i18n="materials_subtitle"
+      >
+        Aradığınız dersin adını veya konusunu yazın.
+      </p>
 
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" class="search-input" placeholder="Örn: Fizik, Matematik, Algoritma...">
+      <div
+        style="
+          display: flex;
+          gap: 15px;
+          margin-bottom: 30px;
+          flex-wrap: wrap;
+          justify-content: center;
+        "
+      >
+        <div
+          class="search-wrapper"
+          style="flex: 1; min-width: 250px; max-width: 500px"
+        >
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            data-i18n-placeholder="search_placeholder"
+            placeholder="Örn: Fizik, Matematik, Algoritma..."
+          />
         </div>
+        <select
+          id="typeFilter"
+          class="search-input"
+          style="width: auto; min-width: 150px"
+          data-i18n-options
+        >
+          <option value="" data-i18n="all_types">Tüm Türler</option>
+          <option value="LINK">🔗 Linkler</option>
+          <option value="LECTURE">📹 Dersler</option>
+          <option value="SLIDES">📊 Slaytlar</option>
+          <option value="EXAM">📝 Sınavlar</option>
+        </select>
+        <select
+          id="courseFilter"
+          class="search-input"
+          style="width: auto; min-width: 200px"
+        >
+          <option value="" data-i18n="all_courses">Tüm Dersler</option>
+        </select>
+      </div>
 
-        <div class="grid" id="materialGrid">
-            </div>
+      <div class="grid" id="materialGrid"></div>
     </main>
 
     <script src="../js/script.js"></script>
-</body>
+  </body>
 </html>
