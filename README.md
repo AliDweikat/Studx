@@ -11,6 +11,7 @@ A full-stack web application for sharing and accessing course materials, notes, 
 5. [Detailed Guides](#detailed-guides)
 6. [Features](#features)
 
+
 ## 🎯 Project Overview
 
 Studx is a platform where students can:
